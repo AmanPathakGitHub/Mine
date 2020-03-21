@@ -20,14 +20,7 @@ public class Win extends MouseAdapter {
 	}
 	
 	public void tick(){
-		col = new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
-		
-		 if (game.gameState == STATE.Win){
-				for(int i = 0; i < 10; i++){
-					handler.addObject(new MenuParticle(rand.nextInt(Screen.width - 32), rand.nextInt(Screen.height - 72), ID.Effects, handler, game));
-				}
-			}
-
+		col = new Color(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255));
 	}
 	
 	public void render(Graphics g){

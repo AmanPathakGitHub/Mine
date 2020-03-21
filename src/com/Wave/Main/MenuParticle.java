@@ -43,7 +43,7 @@ public class MenuParticle extends GameObject {
 		if (game.gameState == STATE.GameOver){
 			col = Color.red;
 		}else if (game.gameState == STATE.Win){
-			col = new Color(rand.nextInt(255) ,rand.nextInt(255), rand.nextInt(255));
+			col = Color.green;
 		}
 		
 		

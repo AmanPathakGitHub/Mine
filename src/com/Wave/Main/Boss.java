@@ -10,9 +10,9 @@ import com.Wave.Main.Game.STATE;
 
 public class Boss extends GameObject {
 
-	Handler handler;
-	int spawn;
-	Random rand = new Random();
+	private Handler handler;
+	private int spawnbullet;
+	private Random rand = new Random();
 	private int timer = 30;
 	private int timer2 = 50;
 	static int BossHP = 100;
@@ -20,10 +20,11 @@ public class Boss extends GameObject {
 	int timer4 = 30;
 	int green = 255;
 	int red = 255;
-	Color col;
-	Game game;
+	private Color col;
+	private Game game;
+	private Spawn spawn;
 		
-	public Boss(int x, int y, ID id , Handler handler,Game game) {
+	public Boss(int x, int y, ID id , Handler handler,Game game, Spawn spawn) {
 		super(x, y, id);
 		
 		xVel = 0;
@@ -31,6 +32,7 @@ public class Boss extends GameObject {
 		
 		this.handler = handler;
 		this.game = game;
+		this.spawn = spawn;
 		
 	}
 
@@ -42,28 +44,23 @@ public class Boss extends GameObject {
 		
 		x += xVel;
 		y += yVel;
-		spawn = rand.nextInt(10);
+		spawnbullet = rand.nextInt(10);
 		collision();
 		BossHP = Game.clamp(BossHP, 0, 100);
 		
 		//int timer5 = 60;
 		
 		if (BossHP == 0){
-			spawn = 1;
+			spawnbullet = 1;
 			setX(330);
 			setY(y);
 			setyVel(0);
 			setxVel(0);
 			timer3--;
-						
-			if (timer3 == 0){
-								
-				handler.removeObject(this);
-				game.gameState = STATE.Win;
-				
-				
-				
-			}
+			spawn.Win();
+			handler.removeObject(this);
+					
+			
 		}
 		
 		if (timer <= 0){
@@ -81,7 +78,7 @@ public class Boss extends GameObject {
 				
 			}
 			
-			if (spawn == 0)
+			if (spawnbullet == 0)
 			handler.addObject(new BossBullet(x, y, ID.Enemy, handler));
 		}
 		
@@ -107,7 +104,6 @@ public class Boss extends GameObject {
 		g.drawRect(450, 15, 200, 32);
 		if (BossHP == 0){
 			for (int i = 0; i < timer; i++){
-				
 				
 				
 			}

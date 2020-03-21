@@ -2,6 +2,8 @@ package com.Wave.Main;
 
 import java.util.Random;
 
+import com.Wave.Main.Game.STATE;
+
 public class Spawn {
 
 	Handler handler;
@@ -15,7 +17,18 @@ public class Spawn {
 		this.handler = handler;
 		this.hud = hud;
 		this.game = game;
+		hud.setLevel(7);
+	}
+	
+	
+	public void Win(){
 		
+		int timer = 200;
+		while (timer > 0){
+			timer--;
+		}
+		
+		game.gameState = STATE.Win;
 	}
 	
 	public void tick(){
@@ -54,7 +67,7 @@ public class Spawn {
 				Game.player.setX(Screen.width - 32);
 				Game.player.setY(Screen.height - 72);
 				handler.addObject(Game.player);
-				handler.addObject(new Boss(330, -56, ID.Boss, handler ,game));
+				handler.addObject(new Boss(330, -56, ID.Boss, handler ,game, this));
 			}
 		}
 	}

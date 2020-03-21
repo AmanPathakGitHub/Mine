@@ -60,8 +60,8 @@ private static final long serialVersionUID = 7711981806252101853L;
 		this.addMouseListener(shop);
 		
 		
-		AudioPlayer.load();
-		AudioPlayer.getMusic("music_menu").loop();
+		//AudioPlayer.load();
+		//AudioPlayer.getMusic("music_menu").loop();
 		
 		new Screen(700, 500,  "Wave" , this);
 		
@@ -237,10 +237,11 @@ private static final long serialVersionUID = 7711981806252101853L;
 		}
 		if (gameState == STATE.Win){
 			win.render(g);
-			handler.tick();
+			handler.render(g);
 		}
 		if(gameState == STATE.Scores){
 			scores.render(g);
+			handler.render(g);
 		}
 	
 		
