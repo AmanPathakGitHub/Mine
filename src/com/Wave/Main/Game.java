@@ -5,6 +5,7 @@ import java.awt.Color;
 //import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.io.FileNotFoundException;
 import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
@@ -25,6 +26,7 @@ private static final long serialVersionUID = 7711981806252101853L;
 	private GameOver over;
 	private Shop shop;
 	private Win win;
+	private Scores scores;
 	
 	
 	 static int frames;
@@ -38,17 +40,18 @@ private static final long serialVersionUID = 7711981806252101853L;
 		Shop,
 		Win,
 		Help,
+		Scores,
 		Menu;
 	}
 	public STATE gameState = STATE.Menu;
-	public Game() {
+	public Game() throws FileNotFoundException {
 				
 		help = new Help(this);
 		
 		handler = new Handler();
 		over = new GameOver(this, handler);
 		shop = new Shop(this);
-		
+		scores = new Scores();
 		
 		menu = new Menu(this , handler);
 		this.addMouseListener(help);
@@ -176,6 +179,11 @@ private static final long serialVersionUID = 7711981806252101853L;
 				handler.tick();
 				
 			}
+			if (gameState == STATE.Scores){
+				scores.tick();
+				handler.tick();
+				
+			}
 		}
 		
 		
@@ -231,6 +239,9 @@ private static final long serialVersionUID = 7711981806252101853L;
 			win.render(g);
 			handler.tick();
 		}
+		if(gameState == STATE.Scores){
+			scores.render(g);
+		}
 	
 		
 		bs.show(); 
@@ -254,7 +265,7 @@ private static final long serialVersionUID = 7711981806252101853L;
 		
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		
 		new Game();
 	}

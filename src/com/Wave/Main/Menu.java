@@ -41,9 +41,13 @@ public class Menu extends MouseAdapter {
 			if (mouseOver(mx, my, 100, 250, 200, 100)){
 				game.gameState = STATE.Help;
 			}
-			
+			//quit
 			if (mouseOver(mx, my, 500, 250, 100, 64)){
 				System.exit(0);
+			}
+			//high-Score
+			if (mouseOver(mx , my,550, 50, 130, 64)){
+				game.gameState = STATE.Scores;
 			}
 		}
 	}
