@@ -42,10 +42,7 @@ private static final long serialVersionUID = 7711981806252101853L;
 	}
 	public STATE gameState = STATE.Menu;
 	public Game() {
-		
-		//if (gameState == STATE.Menu){
-			//menu = new Menu(this , handler);
-		//}
+				
 		help = new Help(this);
 		
 		handler = new Handler();
@@ -60,8 +57,8 @@ private static final long serialVersionUID = 7711981806252101853L;
 		this.addMouseListener(shop);
 		
 		
-		//AudioPlayer.load();
-		//AudioPlayer.getMusic("music_menu").loop();
+		AudioPlayer.load();
+		AudioPlayer.getMusic("music_menu").loop();
 		
 		new Screen(700, 500,  "Wave" , this);
 		

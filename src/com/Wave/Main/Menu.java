@@ -91,6 +91,15 @@ public class Menu extends MouseAdapter {
 		g.drawRect(500, 250, 100, 64);
 		g.setColor(Color.black);
 		g.drawString("Quit", 505, 300);
+		
+		g.setColor(Color.ORANGE);
+		g.fillRect(550, 50, 130, 64);
+		g.setColor(Color.white);
+		g.drawRect(550, 50, 130, 64);
+		g.setColor(Color.black);
+		g.drawString("Score", 555, 100);
+		
+		
 	}
 	
 	public void tick (){
